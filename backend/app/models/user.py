@@ -10,7 +10,15 @@ class User(Base):
     id = Column(Integer, primary_key=True, index=True)
 
     name = Column(String(100), nullable=False)
-    email = Column(String(150), unique=True, nullable=False, index=True)
+
+    email = Column(
+        String(150),
+        unique=True,
+        nullable=False,
+        index=True
+    )
+
+    password_hash = Column(String(255), nullable=False)
 
     age = Column(Integer, nullable=False)
     gender = Column(String(20), nullable=False)
@@ -21,4 +29,13 @@ class User(Base):
     goal = Column(String(30), nullable=False)
     activity_level = Column(String(30), nullable=False)
 
-    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    created_at = Column(
+        DateTime(timezone=True),
+        server_default=func.now()
+    )
+
+    updated_at = Column(
+        DateTime(timezone=True),
+        server_default=func.now(),
+        onupdate=func.now()
+    )

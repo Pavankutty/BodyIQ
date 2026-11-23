@@ -28,6 +28,8 @@ class User(Base):
 
     goal = Column(String(30), nullable=False)
     activity_level = Column(String(30), nullable=False)
+    fitness_level = Column(String(20), nullable=False, default="Beginner")
+    diet_type = Column(String(20), nullable=False)
 
     created_at = Column(
         DateTime(timezone=True),
